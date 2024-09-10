@@ -26,4 +26,6 @@ public class TestController {
 
         return "redirect:/index";
     }
+
+    //테스트입니다
 }
