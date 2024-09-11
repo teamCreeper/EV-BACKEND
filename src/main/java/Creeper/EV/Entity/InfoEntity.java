@@ -8,24 +8,25 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-@Table(name = "info_table")
+@Table(name = "electric_vehicles")
 public class InfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "car_num")
+    private Long carNum;
 
-    @Column
-    private String Brand;
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(unique = true)
-    private String CarName;
+    @Column(unique = true, name = "name")
+    private String name;  // carName을 name으로 변경
 
     public static InfoEntity toInfoEntity(InfoDTO infoDTO){
         InfoEntity infoEntity = new InfoEntity();
-        infoEntity.setId(infoDTO.getId());
+        infoEntity.setCarNum(infoDTO.getCarNum());
         infoEntity.setBrand(infoDTO.getBrand());
-        infoEntity.setCarName(infoDTO.getCarName());
+        infoEntity.setName(infoDTO.getCarName());  // carName을 name으로 변경
 
         return infoEntity;
     }

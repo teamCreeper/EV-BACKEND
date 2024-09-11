@@ -11,16 +11,15 @@ import lombok.ToString;
 @Setter
 @Getter
 public class InfoDTO {
-    private Long id;
-    private String Brand; //자동차 브랜드
-    private String CarName; //자동차 이름
-
+    private Long carNum;
+    private String brand; //자동차 브랜드
+    private String carName; //자동차 이름
 
     public static InfoDTO toInfoDTO(InfoEntity infoEntity){
         InfoDTO infoDTO = new InfoDTO();
-        infoDTO.setId(infoEntity.getId());
+        infoDTO.setCarNum(infoEntity.getCarNum());
         infoDTO.setBrand(infoEntity.getBrand());
-        infoDTO.setCarName(infoEntity.getCarName());
+        infoDTO.setCarName(infoEntity.getName());  // name을 carName으로 변경
 
         return infoDTO;
     }
