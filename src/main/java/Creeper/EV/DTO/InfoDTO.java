@@ -12,12 +12,15 @@ import lombok.ToString;
 @Getter
 public class InfoDTO {
     private Long id;
-    private String temp;
+    private String Brand; //자동차 브랜드
+    private String CarName; //자동차 이름
+
 
     public static InfoDTO toInfoDTO(InfoEntity infoEntity){
         InfoDTO infoDTO = new InfoDTO();
         infoDTO.setId(infoEntity.getId());
-        infoDTO.setTemp(infoEntity.getTemp());
+        infoDTO.setBrand(infoEntity.getBrand());
+        infoDTO.setCarName(infoEntity.getCarName());
 
         return infoDTO;
     }

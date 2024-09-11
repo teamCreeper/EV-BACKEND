@@ -16,12 +16,17 @@ public class InfoEntity {
     private Long id;
 
     @Column
-    private String temp;
+    private String Brand;
+
+    @Column(unique = true)
+    private String CarName;
 
     public static InfoEntity toInfoEntity(InfoDTO infoDTO){
         InfoEntity infoEntity = new InfoEntity();
         infoEntity.setId(infoDTO.getId());
-        infoEntity.setTemp(infoDTO.getTemp());
+        infoEntity.setBrand(infoDTO.getBrand());
+        infoEntity.setCarName(infoDTO.getCarName());
+
         return infoEntity;
     }
 }
