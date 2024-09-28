@@ -25,4 +25,9 @@ public class InfoService {
         // DB에서 브랜드와 이름으로 자동차 정보를 찾는 로직
         return infoRepository.findByBrandAndName(brand, name);
     }
+
+    // 이름으로 자동차 검색 (새로 추가된 메서드)
+    public InfoEntity findCarByName(String name) {
+        return infoRepository.findByName(name);
+    }
 }
