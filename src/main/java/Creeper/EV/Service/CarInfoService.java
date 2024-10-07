@@ -24,7 +24,7 @@ public class CarInfoService {
     public List<CarInfoDTO> getAllCarInfo(){
         List<CarInfoEntity> carInfos = carInfoRepository.findAll();
         return carInfos.stream()
-                .map(carInfo -> new CarInfoDTO(carInfo.getCarNum(), carInfo.getBrand(), carInfo.getName()))
+                .map(carInfo -> new CarInfoDTO(carInfo.getCarNum(), carInfo.getBrand(), carInfo.getBrand_en(), carInfo.getName(), carInfo.getName_en(), carInfo.getKWh(), carInfo.getVehicleType()))
                 .collect(Collectors.toList());
     }
 }
