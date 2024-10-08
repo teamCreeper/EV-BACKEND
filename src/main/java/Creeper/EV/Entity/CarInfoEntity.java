@@ -34,11 +34,11 @@ public class CarInfoEntity {
     @Column(name = "name_en") // DB ev-project table electric_vehicles name_en
     private String name_en; // 자동차 모델명 EN
 
-    @Column(name = "kWh", nullable = true) // DB ev-project table electric_vehicles kWh
-    private BigDecimal kWh; // 자동차 kWh
+    @Column(name = "kwh_value", nullable = true) // DB ev-project table electric_vehicles kWh
+    private BigDecimal kwh_value; // 자동차 kWh
 
-    @Column(name = "vehicleType", nullable = true) // DB ev-project table electric_vehicles vehicleType
-    private String vehicleType; // 모델 타입ble electric_vehicles vehicleType
+    @Column(name = "vehicle_type", nullable = true) // DB ev-project table electric_vehicles vehicleType
+    private String vehicle_type; // 모델 타입ble electric_vehicles vehicleType
 
     public static CarInfoEntity toCarInfoEntity(CarInfoDTO carInfoDTO){
         CarInfoEntity carInfoEntity = new CarInfoEntity();
@@ -47,8 +47,8 @@ public class CarInfoEntity {
         carInfoEntity.setBrand_en(carInfoDTO.getBrand_en());
         carInfoEntity.setName(carInfoDTO.getName());
         carInfoEntity.setName_en(carInfoDTO.getName_en());
-        carInfoEntity.setKWh(carInfoDTO.getKWh());
-        carInfoEntity.setVehicleType(carInfoDTO.getVehicleType());
+        carInfoEntity.setKwh_value(carInfoDTO.getKwh_value());
+        carInfoEntity.setVehicle_type(carInfoDTO.getVehicle_type());
 
         return carInfoEntity; 
     }

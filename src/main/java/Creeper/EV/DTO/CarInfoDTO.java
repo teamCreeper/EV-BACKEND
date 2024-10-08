@@ -17,19 +17,19 @@ public class CarInfoDTO {
     private String brand_en;        // 브랜드 EN
     private String name;            // 자동차 모델명 KR
     private String name_en;         // 자동차 모델명 EN
-    private BigDecimal kWh;         // 자동차 kWh
-    private String vehicleType;     // 자동차 구동 모델
+    private BigDecimal kwh_value;         // 자동차 kWh
+    private String vehicle_type;     // 자동차 구동 모델
 
 
     // 매개변수를 받는 생성자 추가
-    public CarInfoDTO(Long carNum, String brand, String brand_en, String name, String name_en, BigDecimal kWh, String vehicleType) {
+    public CarInfoDTO(Long carNum, String brand, String brand_en, String name, String name_en, BigDecimal kwh_value, String vehicle_type) {
         this.carNum = carNum;
         this.brand = brand;
         this.brand_en = brand_en;
         this.name = name;
         this.name_en = name_en;
-        this.kWh = kWh;
-        this.vehicleType = vehicleType;
+        this.kwh_value = kwh_value;
+        this.vehicle_type = vehicle_type;
     }
 
     public static CarInfoDTO toCarInfoDTO(CarInfoEntity carInfoEntity) {
@@ -40,8 +40,8 @@ public class CarInfoDTO {
         carInfoDTO.setBrand_en(carInfoEntity.getBrand_en());
         carInfoDTO.setName(carInfoEntity.getName());
         carInfoDTO.setName_en(carInfoEntity.getName_en());
-        carInfoDTO.setKWh(carInfoEntity.getKWh());
-        carInfoDTO.setVehicleType(carInfoEntity.getVehicleType());
+        carInfoDTO.setKwh_value(carInfoEntity.getKwh_value());
+        carInfoDTO.setVehicle_type(carInfoEntity.getVehicle_type());
 
         return carInfoDTO;
     }
