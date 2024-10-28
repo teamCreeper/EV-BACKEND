@@ -1,7 +1,5 @@
 package Creeper.EV.Controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,26 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Creeper.EV.DTO.SearchCarDTO;
-import Creeper.EV.Service.SearchCarService;
-import lombok.extern.slf4j.Slf4j;
+import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.Service.CarDetailService;
 
-@Slf4j
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
-public class SearchCarController {
-
+public class CarDetailController {
+    
     @Autowired
-    private SearchCarService searchCarService;
+    private CarDetailService carDetailService;
 
-    @GetMapping("/searchCar")
-    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo(@RequestParam("keyword") String searchKeyword) {
+    @GetMapping("/carDetail")
+    public ResponseEntity<CarDetailDTO> getCarDetails(@RequestParam("carId") Long carId) {
         try {
-            List<SearchCarDTO> searchCarList = searchCarService.getCarBasicInfo(searchKeyword);
-            return ResponseEntity.ok(searchCarList);
-
-        } catch(Exception e) {
+            CarDetailDTO carDetail = carDetailService.getCarDetail(carId);
+            return ResponseEntity.ok(carDetail);
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

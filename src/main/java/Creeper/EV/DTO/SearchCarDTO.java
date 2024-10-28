@@ -1,6 +1,5 @@
 package Creeper.EV.DTO;
 
-import Creeper.EV.Entity.CarBasicInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -23,11 +22,5 @@ public class SearchCarDTO {
         this.carId = carId;
         this.carName = carName;
         this.carBrandId = carBrandId;
-    }
-
-    public static SearchCarDTO toCarSearchDTO(CarBasicInfo carBasicInfo) {
-        SearchCarDTO carSearchDTO = new SearchCarDTO(carBasicInfo.getCarId(), carBasicInfo.getCarName(), carBasicInfo.getCarBrandId());
-
-        return carSearchDTO;
     }
 }
