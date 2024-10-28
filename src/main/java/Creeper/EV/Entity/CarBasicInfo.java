@@ -1,6 +1,6 @@
 package Creeper.EV.Entity;
 
-import Creeper.EV.DTO.CarSearchDTO;
+import Creeper.EV.DTO.SearchCarDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,7 +32,7 @@ public class CarBasicInfo {
         this.carBrandId = carBrandId;
     }
 
-    public static CarBasicInfo toCarBasicInfo(CarSearchDTO carSearchDTO) {
+    public static CarBasicInfo toCarBasicInfo(SearchCarDTO carSearchDTO) {
         CarBasicInfo carBasicInfo = new CarBasicInfo(carSearchDTO.getCarId(), carSearchDTO.getCarName(), carSearchDTO.getCarBrandId());
 
         return carBasicInfo;
