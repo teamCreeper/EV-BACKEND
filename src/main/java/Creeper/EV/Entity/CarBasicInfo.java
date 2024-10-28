@@ -25,16 +25,16 @@ public class CarBasicInfo {
     @Column(name = "car_brand_id")
     private Long carBrandId;
 
+    public CarBasicInfo() {
+        this.carId = null;
+        this.carName = null;
+        this.carBrandId = null;
+    }
+
     // Setter의 대신 생성자로 대체
     public CarBasicInfo(Long carId, String carName, Long carBrandId) {
         this.carId = carId;
         this.carName = carName;
         this.carBrandId = carBrandId;
-    }
-
-    public static CarBasicInfo toCarBasicInfo(SearchCarDTO carSearchDTO) {
-        CarBasicInfo carBasicInfo = new CarBasicInfo(carSearchDTO.getCarId(), carSearchDTO.getCarName(), carSearchDTO.getCarBrandId());
-
-        return carBasicInfo;
     }
 }
