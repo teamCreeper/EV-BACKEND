@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Getter
-public class CarSearchDTO {
+public class SearchCarDTO {
     // 자동차 모델의 고유 번호
     private Long carId; 
     
@@ -19,14 +19,14 @@ public class CarSearchDTO {
     private Long carBrandId;
 
     // Setter의 대신 생성자로 대체
-    public CarSearchDTO(Long carId, String carName, Long carBrandId) {
+    public SearchCarDTO(Long carId, String carName, Long carBrandId) {
         this.carId = carId;
         this.carName = carName;
         this.carBrandId = carBrandId;
     }
 
-    public static CarSearchDTO toCarSearchDTO(CarBasicInfo carBasicInfo) {
-        CarSearchDTO carSearchDTO = new CarSearchDTO(carBasicInfo.getCarId(), carBasicInfo.getCarName(), carBasicInfo.getCarBrandId());
+    public static SearchCarDTO toCarSearchDTO(CarBasicInfo carBasicInfo) {
+        SearchCarDTO carSearchDTO = new SearchCarDTO(carBasicInfo.getCarId(), carBasicInfo.getCarName(), carBasicInfo.getCarBrandId());
 
         return carSearchDTO;
     }
