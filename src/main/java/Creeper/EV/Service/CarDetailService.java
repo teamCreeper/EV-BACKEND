@@ -1,6 +1,5 @@
 package Creeper.EV.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Creeper.EV.DTO.CarDetailDTO;
@@ -12,17 +11,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CarDetailService {
     
-    @Autowired
-    private CarDetailRepository carDetailRepository;
+    private final CarDetailRepository carDetailRepository;
 
     public CarDetailDTO getCarDetail(Long carId) {
-        CarDetailInfo carDetailInfo = carDetailRepository.findByCarId(carId);
+        CarDetailInfo carDetailInfo = carDetailRepository.findByCarBasicInfo_CarId(carId);
 
         if(carDetailInfo != null) {
             return new CarDetailDTO(
-                carDetailInfo.getCarId(),
-                carDetailInfo.getBatteryId(),
-                carDetailInfo.getCarPrise(),
+                carDetailInfo.getCarBasicInfo().getCarId(),
+                carDetailInfo.getBatteryInfo().getBatteryId(),
+                carDetailInfo.getCarPrice(),
                 carDetailInfo.getMotoType(),
                 carDetailInfo.getUseableBattery(),
                 carDetailInfo.getZToHundred(),

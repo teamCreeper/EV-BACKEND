@@ -1,15 +1,15 @@
 package Creeper.EV.Service;
 
-import Creeper.EV.Repository.SearchCarRepository;
-import Creeper.EV.DTO.SearchCarDTO;
-import Creeper.EV.Entity.CarBasicInfo;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import Creeper.EV.DTO.SearchCarDTO;
+import Creeper.EV.Entity.CarBasicInfo;
+import Creeper.EV.Repository.SearchCarRepository;
 import lombok.RequiredArgsConstructor;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +22,7 @@ public class SearchCarService {
         List<CarBasicInfo> carBasicInfos = carSearchRepository.findByCarNameContaining(searchKeyword);
 
         return carBasicInfos.stream()
-                .map(carBasicinfo -> new SearchCarDTO(carBasicinfo.getCarId(), carBasicinfo.getCarName(), carBasicinfo.getCarBrandId()))
+                .map(carBasicinfo -> new SearchCarDTO(carBasicinfo.getCarId(), carBasicinfo.getCarName(), carBasicinfo.getCarBrand().getBrandId()))
                 .collect(Collectors.toList());
     }
 }
