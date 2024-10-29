@@ -1,35 +1,28 @@
 package Creeper.EV.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import Creeper.EV.DTO.CarDetailDTO;
-import Creeper.EV.Entity.CarDetailInfo;
 import Creeper.EV.Repository.CarDetailRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
-@RequiredArgsConstructor
 public class CarDetailService {
     
     private final CarDetailRepository carDetailRepository;
 
-    public CarDetailDTO getCarDetail(Long carId) {
-        CarDetailInfo carDetailInfo = carDetailRepository.findByCarBasicInfo_CarId(carId);
+    public CarDetailService(CarDetailRepository carDetailRepository) {
+        this.carDetailRepository = carDetailRepository;
+    }
 
-        if(carDetailInfo != null) {
-            return new CarDetailDTO(
-                carDetailInfo.getCarBasicInfo().getCarId(),
-                carDetailInfo.getBatteryInfo().getBatteryId(),
-                carDetailInfo.getCarPrice(),
-                carDetailInfo.getMotoType(),
-                carDetailInfo.getUseableBattery(),
-                carDetailInfo.getZToHundred(),
-                carDetailInfo.getTopSpeed(),
-                carDetailInfo.getCarRange(),
-                carDetailInfo.getEfficiency()
-            );
-        }
+    public List<CarDetailDTO> getCarDetailByCarId(Long carId) {
+        Long batteryId = carDetailRepository.findBatteryIdByCarId(carId);
 
-        return null;
+        List<CarDetailDTO> carDetailDTO = carDetailRepository.findByCarBasicInfo_CarIdAndBatteryId(carId, batteryId);
+
+        return carDetailDTO;
     }
 }

@@ -20,8 +20,8 @@ public class BatteryInfo {
     @Column(name = "battery_id", unique = true, nullable = false)
     private Long batteryId;
 
-    @Column(name = "brand_name")
-    private String brandName;
+    @Column(name = "battery_name")
+    private String batteryName;
 
     @ManyToOne
     @JoinColumn(name = "battery_brand_id", referencedColumnName = "brand_id")
@@ -31,9 +31,9 @@ public class BatteryInfo {
 
     }
 
-    public BatteryInfo(Long batteryId, String brandName, BatteryBrand batteryBrand) {
+    public BatteryInfo(Long batteryId, String batteryName, BatteryBrand batteryBrand) {
         this.batteryId = batteryId;
-        this.brandName = brandName;
+        this.batteryName = batteryName;
         this.batteryBrand = batteryBrand;
     }
 }
