@@ -2,6 +2,7 @@ package Creeper.EV.Service;
 
 import java.util.List;
 
+import org.springframework.core.annotation.MergedAnnotations.Search;
 import org.springframework.stereotype.Service;
 
 import Creeper.EV.DTO.SearchCarDTO;
@@ -22,7 +23,12 @@ public class SearchCarService {
     public List<SearchCarDTO> getCarBasicInfo(Long brandId, String searchKeyword) {
         List<SearchCarDTO> carBasicInfos = carSearchRepository.findByCarBrand_BrandIdAndCarNameContaining(brandId, searchKeyword);
         
-        log.info("info {}", carBasicInfos);
         return carBasicInfos;
+    }
+
+    public List<SearchCarDTO> getSearchAllBrandCarInfo(Long brandId) {
+        List<SearchCarDTO> carAllBrandCarInfos = carSearchRepository.findAll(brandId);
+
+        return carAllBrandCarInfos;
     }
 }
