@@ -25,11 +25,10 @@ public class SearchCarController {
     private SearchCarService searchCarService;
 
     @GetMapping("/searchCar")
-    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo(@RequestParam("keyword") String searchKeyword) {
+    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo( @RequestParam("brandId") Long brandId, @RequestParam("keyword") String searchKeyword) {
         try {
-            List<SearchCarDTO> searchCarList = searchCarService.getCarBasicInfo(searchKeyword);
+            List<SearchCarDTO> searchCarList = searchCarService.getCarBasicInfo(brandId, searchKeyword);
 
-            log.info("BrandCarDTO List: {}", searchCarList);
             return ResponseEntity.ok(searchCarList);
 
         } catch(Exception e) {
