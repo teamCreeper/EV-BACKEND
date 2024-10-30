@@ -25,12 +25,23 @@ public class SearchCarController {
     private SearchCarService searchCarService;
 
     @GetMapping("/searchCar")
-    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo( @RequestParam("brandId") Long brandId, @RequestParam("keyword") String searchKeyword) {
+    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo(@RequestParam("brandId") Long brandId, @RequestParam("keyword") String searchKeyword) {
         try {
             List<SearchCarDTO> searchCarList = searchCarService.getCarBasicInfo(brandId, searchKeyword);
 
             return ResponseEntity.ok(searchCarList);
 
+        } catch(Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/searchBrandCar")
+    public ResponseEntity<List<SearchCarDTO>> getSearchAllBrandCarInfo(@RequestParam("brandId") Long brandId) {
+        try {
+            List<SearchCarDTO> searchCarList = searchCarService.getSearchAllBrandCarInfo(brandId);
+
+            return ResponseEntity.ok(searchCarList);
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
