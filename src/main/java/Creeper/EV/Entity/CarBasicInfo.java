@@ -27,11 +27,9 @@ public class CarBasicInfo {
     @JoinColumn(name = "car_brand_id", referencedColumnName = "brand_id")
     private CarBrand carBrand;
 
-    public CarBasicInfo() {
-        // JPA 용
-    }
+    public CarBasicInfo() { }
 
-    // Setter의 대신 생성자로 대체
+    // Setter 대신 생성자로 대체
     public CarBasicInfo(Long carId, String carName, CarBrand carBrand) {
         this.carId = carId;
         this.carName = carName;

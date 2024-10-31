@@ -21,10 +21,9 @@ public class CarBrand {
     @Column(name = "brand_name")
     private String brandName;
 
-    public CarBrand() {
-        // JPA 용
-    }
+    public CarBrand() { }
 
+    // Setter 대신 생성자로 대체
     public CarBrand(Long brandId, String brandName) {
         this.brandId = brandId;
         this.brandName = brandName;

@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Creeper.EV.DTO.SearchCarDTO;
 import Creeper.EV.Service.SearchCarService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -36,10 +34,10 @@ public class SearchCarController {
         }
     }
 
-    @GetMapping("/searchBrandCar")
-    public ResponseEntity<List<SearchCarDTO>> getSearchAllBrandCarInfo(@RequestParam("brandId") Long brandId) {
+    @GetMapping("/allCar")
+    public ResponseEntity<List<SearchCarDTO>> getAllCar() {
         try {
-            List<SearchCarDTO> searchCarList = searchCarService.getSearchAllBrandCarInfo(brandId);
+            List<SearchCarDTO> searchCarList = searchCarService.getAllCar();
 
             return ResponseEntity.ok(searchCarList);
         } catch(Exception e) {
