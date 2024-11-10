@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import Creeper.EV.DTO.SearchCarDTO;
+import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Repository.SearchCarRepository;
 
 @Service
 public class SearchCarService {
 
-    
     private final SearchCarRepository carSearchRepository;
 
     public SearchCarService(SearchCarRepository carSearchRepository) {
@@ -23,9 +23,9 @@ public class SearchCarService {
         return carBasicInfos;
     }
 
-    public List<SearchCarDTO> getAllCar() {
-        List<SearchCarDTO> carAllBrandCarInfos = carSearchRepository.findAllCar();
+    public List<CarBasicInfo> getAllCar() {
+        List<CarBasicInfo> allCar = carSearchRepository.findAll();
 
-        return carAllBrandCarInfos;
+        return allCar;
     }
 }

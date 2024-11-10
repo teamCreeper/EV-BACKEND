@@ -17,7 +17,5 @@ public interface SearchCarRepository extends JpaRepository<CarBasicInfo, Long> {
      "WHERE b.brandId = :carBrandId AND c.carName LIKE CONCAT('%', :carName, '%')")
      List<SearchCarDTO> findByCarBrand_BrandIdAndCarNameContaining(Long carBrandId, String carName);
 
-     @Query("SELECT new Creeper.EV.DTO.SearchCarDTO(c.carId, c.carName, b.brandId) " +
-     "FROM CarBasicInfo c JOIN c.carBrand b ")
-     List<SearchCarDTO> findAllCar();
+     List<CarBasicInfo> findAll();
 }

@@ -29,10 +29,19 @@ public class CarDetailController {
         try {
             List<CarDetailDTO> carDetail = carDetailService.getCarDetailByCarId(carId);
 
-            log.info("BrandCarDTO List: {}", carDetail);
-
             return ResponseEntity.ok(carDetail);
         } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/carBatteryInfo")
+    public ResponseEntity<List<CarDetailDTO>> getCarBatteryInfo() {
+        try {
+            List<CarDetailDTO> carDetail = carDetailService.getCarBatteryInfo();
+
+            return ResponseEntity.ok(carDetail);
+        } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
