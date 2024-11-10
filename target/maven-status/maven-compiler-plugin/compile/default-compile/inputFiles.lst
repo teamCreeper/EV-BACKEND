@@ -1,6 +1,8 @@
+E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Controller\BatteryInfoController.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Controller\BrandCarController.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Controller\CarDetailController.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Controller\SearchCarController.java
+E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\DTO\BatteryInfoDTO.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\DTO\BrandCarDTO.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\DTO\CarDetailDTO.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\DTO\SearchCarDTO.java
@@ -10,9 +12,11 @@ E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Entity\CarBasicInfo.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Entity\CarBrand.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Entity\CarDetailInfo.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\EvApplication.java
+E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Repository\BatteryInfoRepository.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Repository\BrandCarRepository.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Repository\CarDetailRepository.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Repository\SearchCarRepository.java
+E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Service\BatteryInfoService.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Service\BrandCarService.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Service\CarDetailService.java
 E:\EV-Main\EV-BACKEND\src\main\java\Creeper\EV\Service\SearchCarService.java
