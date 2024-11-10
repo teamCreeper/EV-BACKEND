@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Creeper.EV.DTO.SearchCarDTO;
+import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Service.SearchCarService;
 
 @RestController
@@ -35,11 +36,11 @@ public class SearchCarController {
     }
 
     @GetMapping("/allCar")
-    public ResponseEntity<List<SearchCarDTO>> getAllCar() {
+    public ResponseEntity<List<CarBasicInfo>> getAllCar() {
         try {
-            List<SearchCarDTO> searchCarList = searchCarService.getAllCar();
+            List<CarBasicInfo> allCar = searchCarService.getAllCar();
 
-            return ResponseEntity.ok(searchCarList);
+            return ResponseEntity.ok(allCar);
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }

@@ -18,22 +18,30 @@ public class BatteryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "battery_id", unique = true, nullable = false)
-    private Long batteryId;
+    private String batteryId;
 
-    @Column(name = "battery_name")
-    private String batteryName;
+    @Column(name = "battery_type")
+    private String batteryType;
 
     @ManyToOne
     @JoinColumn(name = "battery_brand_id", referencedColumnName = "brand_id")
     private BatteryBrand batteryBrand;
 
+    @Column(name = "capacity")
+    private String capacity;
+
+    @Column(name = "charge_time")
+    private String charge_time;
+
     public BatteryInfo() {
 
     }
 
-    public BatteryInfo(Long batteryId, String batteryName, BatteryBrand batteryBrand) {
+    public BatteryInfo(String batteryId, String batteryType, BatteryBrand batteryBrand, String capacity, String charge_time) {
         this.batteryId = batteryId;
-        this.batteryName = batteryName;
+        this.batteryType = batteryType;
         this.batteryBrand = batteryBrand;
+        this.capacity = capacity;
+        this.charge_time = charge_time;
     }
 }
