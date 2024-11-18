@@ -20,7 +20,7 @@ public interface CarDetailRepository extends JpaRepository<CarDetailInfo, Long> 
 
     // 메인 페이지 조회용
     @Query("SELECT b.batteryId FROM CarDetailInfo d JOIN d.batteryInfo b WHERE d.carBasicInfo.carId = :carId")
-    String findBatteryIdByCarId(Long carId);
+    String findBatteryIdByCarId(@Param("carId") Long carId);
     
     // 메인 페이지 조회용
     @Query("SELECT new Creeper.EV.DTO.CarDetailDTO(c.carId, b.batteryId, d.carPrice, d.motoType, d.useableBattery, d.zToHundred, d.topSpeed, d.carRange, d.efficiency, b.batteryType, br.brandName, br.brandCountry) " +

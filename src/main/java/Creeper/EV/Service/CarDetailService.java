@@ -21,8 +21,11 @@ public class CarDetailService {
     public List<CarDetailDTO> getCarDetailByCarId(Long carId) {
         String batteryId = carDetailRepository.findBatteryIdByCarId(carId);
 
+        log.info(batteryId);
+
         List<CarDetailDTO> carDetailDTO = carDetailRepository.findByCarBasicInfo_CarIdAndBatteryId(carId, batteryId);
 
+        log.info("carDetail", carDetailDTO);
         return carDetailDTO;
     }
 
