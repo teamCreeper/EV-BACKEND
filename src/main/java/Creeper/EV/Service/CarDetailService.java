@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.Entity.CarDetailInfo;
 import Creeper.EV.Repository.CarDetailRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,15 +19,19 @@ public class CarDetailService {
         this.carDetailRepository = carDetailRepository;
     }
 
-    public List<CarDetailDTO> getCarDetailByCarId(Long carId) {
-        String batteryId = carDetailRepository.findBatteryIdByCarId(carId);
+    public List<CarDetailInfo> getCarDetailByCarId(Long carId) {
+        List<CarDetailInfo> carDetailInfos = carDetailRepository.findByCarId(carId);
 
+<<<<<<< Updated upstream
         log.info(batteryId);
 
         List<CarDetailDTO> carDetailDTO = carDetailRepository.findByCarBasicInfo_CarIdAndBatteryId(carId, batteryId);
 
         log.info("carDetail", carDetailDTO);
         return carDetailDTO;
+=======
+        return carDetailInfos;
+>>>>>>> Stashed changes
     }
 
     public List<CarDetailDTO> getCarBatteryInfo() {

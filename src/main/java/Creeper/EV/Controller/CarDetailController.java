@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.Entity.CarDetailInfo;
 import Creeper.EV.Service.CarDetailService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,9 +26,9 @@ public class CarDetailController {
     private CarDetailService carDetailService;
 
     @GetMapping("/carDetail")
-    public ResponseEntity<List<CarDetailDTO>> getCarDetails(@RequestParam("carId") Long carId) {
+    public ResponseEntity<List<CarDetailInfo>> getCarDetails(@RequestParam("carId") Long carId) {
         try {
-            List<CarDetailDTO> carDetail = carDetailService.getCarDetailByCarId(carId);
+            List<CarDetailInfo> carDetail = carDetailService.getCarDetailByCarId(carId);
 
             return ResponseEntity.ok(carDetail);
         } catch (Exception e) {
