@@ -22,16 +22,7 @@ public class CarDetailService {
     public List<CarDetailInfo> getCarDetailByCarId(Long carId) {
         List<CarDetailInfo> carDetailInfos = carDetailRepository.findByCarId(carId);
 
-<<<<<<< Updated upstream
-        log.info(batteryId);
-
-        List<CarDetailDTO> carDetailDTO = carDetailRepository.findByCarBasicInfo_CarIdAndBatteryId(carId, batteryId);
-
-        log.info("carDetail", carDetailDTO);
-        return carDetailDTO;
-=======
         return carDetailInfos;
->>>>>>> Stashed changes
     }
 
     public List<CarDetailDTO> getCarBatteryInfo() {
