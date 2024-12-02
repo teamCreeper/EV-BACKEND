@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import Creeper.EV.DTO.SearchCarDTO;
+import Creeper.EV.DTO.CarBasicInfoDTO;
 import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Repository.SearchCarRepository;
 
@@ -17,8 +17,8 @@ public class SearchCarService {
         this.carSearchRepository = carSearchRepository;
     }
 
-    public List<SearchCarDTO> getCarBasicInfo(Long brandId, String searchKeyword) {
-        List<SearchCarDTO> carBasicInfos = carSearchRepository.findByCarBrand_BrandIdAndCarNameContaining(brandId, searchKeyword);
+    public List<CarBasicInfoDTO> getCarBasicInfo(Long brandId, String searchKeyword) {
+        List<CarBasicInfoDTO> carBasicInfos = carSearchRepository.findByCarBrand_BrandIdAndCarNameContaining(brandId, searchKeyword);
         
         return carBasicInfos;
     }

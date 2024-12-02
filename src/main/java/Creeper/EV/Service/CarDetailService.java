@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.DTO.CarDetailInfoDTO;
 import Creeper.EV.Entity.CarDetailInfo;
 import Creeper.EV.Repository.CarDetailRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,15 +19,27 @@ public class CarDetailService {
         this.carDetailRepository = carDetailRepository;
     }
 
-    public List<CarDetailInfo> getCarDetailByCarId(Long carId) {
+    public List<CarDetailInfoDTO> getCarDetailByCarId(Long carId) {
+        // 엔티티 데이터 가져오기
         List<CarDetailInfo> carDetailInfos = carDetailRepository.findByCarId(carId);
 
-        return carDetailInfos;
+        // DTO로 변환
+        return carDetailInfos.stream()
+            .map(this::convertToDTO)
+            .toList();
     }
-
-    public List<CarDetailDTO> getCarBatteryInfo() {
-        List<CarDetailDTO> carDetailDTO = carDetailRepository.findByCarInfo();
-
-        return carDetailDTO;
+    
+    private CarDetailInfoDTO convertToDTO(CarDetailInfo carDetailInfo) {
+        return new CarDetailInfoDTO(
+            carDetailInfo.getCarBasicInfo(),
+            carDetailInfo.getBatteryInfo(),
+            carDetailInfo.getCarPrice(),
+            carDetailInfo.getMotoType(),
+            carDetailInfo.getUseableBattery(),
+            carDetailInfo.getZToHundred(),
+            carDetailInfo.getTopSpeed(),
+            carDetailInfo.getCarRange(),
+            carDetailInfo.getEfficiency()
+        );
     }
 }

@@ -4,19 +4,18 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.DTO.CarDetailInfoDTO;
+import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Entity.CarDetailInfo;
 
 @Repository
-public interface CarDetailRepository extends JpaRepository<CarDetailInfo, Long> {
+public interface CarDetailRepository extends JpaRepository<CarDetailInfo, Long> {    
+    @Query("SELECT c FROM CarDetailInfo c WHERE c.carBasicInfo.carId = :carId")
+    List<CarDetailInfo> findByCarId(@Param("carId") Long carId);
 
-    // 배터리 브랜드 별 분리용
-    @Query("SELECT new Creeper.EV.DTO.CarDetailDTO(c.carId, b.batteryId, c.carName, batteryType, b.capacity, b.charge_time, br.brandName, br.brandCountry) " +
-    "FROM CarDetailInfo d JOIN d.carBasicInfo c JOIN d.batteryInfo b JOIN b.batteryBrand br ")
-    List<CarDetailDTO> findByCarInfo();
-    
-    List<CarDetailInfo> findByCarId(Long carId);
+    List<CarDetailInfo> findByCarBasicInfo(CarBasicInfo carBasicInfo);
 }
 

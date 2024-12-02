@@ -20,10 +20,6 @@ public class CarDetailInfo {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    // car_id를 독립적으로 선언
-    @Column(name = "car_id", insertable = false, updatable = false)
-    private Long carId;
-
     // CarBasicInfo와 연관 관계 설정
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "car_id")
