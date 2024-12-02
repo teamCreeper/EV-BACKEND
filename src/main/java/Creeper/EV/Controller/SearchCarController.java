@@ -2,7 +2,6 @@ package Creeper.EV.Controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Creeper.EV.DTO.SearchCarDTO;
+import Creeper.EV.DTO.CarBasicInfoDTO;
 import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Service.SearchCarService;
 
@@ -20,13 +19,16 @@ import Creeper.EV.Service.SearchCarService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class SearchCarController {
 
-    @Autowired
-    private SearchCarService searchCarService;
+    private final SearchCarService searchCarService;
+
+    public SearchCarController(SearchCarService searchCarService) {
+        this.searchCarService = searchCarService;
+    }
 
     @GetMapping("/searchCar")
-    public ResponseEntity<List<SearchCarDTO>> getSearchCarInfo(@RequestParam("brandId") Long brandId, @RequestParam("keyword") String searchKeyword) {
+    public ResponseEntity<List<CarBasicInfoDTO>> getSearchCarInfo(@RequestParam("brandId") Long brandId, @RequestParam("keyword") String searchKeyword) {
         try {
-            List<SearchCarDTO> searchCarList = searchCarService.getCarBasicInfo(brandId, searchKeyword);
+            List<CarBasicInfoDTO> searchCarList = searchCarService.getCarBasicInfo(brandId, searchKeyword);
 
             return ResponseEntity.ok(searchCarList);
 

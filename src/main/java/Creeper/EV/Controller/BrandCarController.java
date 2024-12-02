@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Creeper.EV.DTO.BrandCarDTO;
+import Creeper.EV.Entity.CarBasicInfo;
 import Creeper.EV.Service.BrandCarService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,12 +23,7 @@ public class BrandCarController {
     private BrandCarService brandCarService;
 
     @GetMapping("/brandCars")
-    public List<BrandCarDTO> getCarsByBrand(@RequestParam("brandId") Long brandId) {
-        List<BrandCarDTO> testDTO = brandCarService.getCarsByBrand(brandId);
-
-        log.info("BrandCarDTO List: {}", testDTO);
-
+    public List<CarBasicInfo> getCarsByBrand(@RequestParam("brandId") Long brandId) {
         return brandCarService.getCarsByBrand(brandId);
     }
-
 }

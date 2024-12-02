@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import Creeper.EV.DTO.CarDetailDTO;
+import Creeper.EV.DTO.CarDetailInfoDTO;
 import Creeper.EV.Entity.CarDetailInfo;
 import Creeper.EV.Service.CarDetailService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,24 +26,16 @@ public class CarDetailController {
     private CarDetailService carDetailService;
 
     @GetMapping("/carDetail")
-    public ResponseEntity<List<CarDetailInfo>> getCarDetails(@RequestParam("carId") Long carId) {
+    public ResponseEntity<List<CarDetailInfoDTO>> getCarDetails(@RequestParam("carId") Long carId) {
         try {
-            List<CarDetailInfo> carDetail = carDetailService.getCarDetailByCarId(carId);
+            // DTO 리스트 가져오기
+            List<CarDetailInfoDTO> carDetailDTOs = carDetailService.getCarDetailByCarId(carId);
 
-            return ResponseEntity.ok(carDetail);
+            return ResponseEntity.ok(carDetailDTOs);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
-    @GetMapping("/carBatteryInfo")
-    public ResponseEntity<List<CarDetailDTO>> getCarBatteryInfo() {
-        try {
-            List<CarDetailDTO> carDetail = carDetailService.getCarBatteryInfo();
-
-            return ResponseEntity.ok(carDetail);
-        } catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
+    //@GetMapping("/carBatteryInfo")
 }
